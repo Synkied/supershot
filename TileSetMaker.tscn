@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/crosshair.png" type="Texture" id=1]
+[ext_resource path="res://assets/ground_grey.png" type="Texture" id=2]
+[ext_resource path="res://assets/wall.png" type="Texture" id=3]
+[ext_resource path="res://assets/rifle.png" type="Texture" id=4]
+[ext_resource path="res://assets/table_unflipped.png" type="Texture" id=5]
+[ext_resource path="res://assets/table_flipped.png" type="Texture" id=6]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="wall" type="Sprite" parent="."]
+position = Vector2( -1, 0 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 64, 64 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="wall"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="wall/StaticBody2D"]
+polygon = PoolVector2Array( 32, 31, 32, -32, -32, -32, -32, 32 )
+
+[node name="enemy_spawn" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 64, 64 )
+
+[node name="ground_grey" type="Sprite" parent="."]
+position = Vector2( -1, 0 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 64, 64 )
+
+[node name="rifle" type="Sprite" parent="."]
+position = Vector2( -1, 0 )
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 64, 64 )
+
+[node name="table_unflipped" type="Sprite" parent="."]
+position = Vector2( -1, 0 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 64, 64 )
+
+[node name="table_flipped" type="Sprite" parent="."]
+position = Vector2( -1, 0 )
+texture = ExtResource( 6 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 64, 64 )
