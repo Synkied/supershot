@@ -1,5 +1,8 @@
 extends Area2D
 
+# Signals
+signal game_over
+
 var speed = 750
 var max_distance = 50
 
@@ -17,5 +20,6 @@ func _on_Projectile_body_entered(body):
 		body.queue_free()
 	if body.is_in_group("players"):
 		body.queue_free()
+		GlobalManager.game_over()
 	if body.is_in_group("walls"):
 		queue_free()

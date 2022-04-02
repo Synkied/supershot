@@ -1,6 +1,5 @@
 extends "res://characters/Character.gd"
 
-
 # Variables
 var velocity = Vector2.ZERO
 var font

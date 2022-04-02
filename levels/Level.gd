@@ -45,3 +45,7 @@ func set_camera_limits():
 	player_camera.limit_top = map_size.position.y * cell_size.y
 	player_camera.limit_right = map_size.end.x * cell_size.x
 	player_camera.limit_bottom = map_size.end.y * cell_size.y
+
+func game_over():
+	GlobalManager.game_over()
+

@@ -27,8 +27,10 @@ func shoot():
 	bullet.global_transform = muzzle.global_transform
 	fire_delay = max_fire_delay
 	$BulletShot.play()
+	bullet.connect('game_over', self, 'dead')
 
 
 func attach_weapon(texture):
 	has_weapon = true
 	$Weapon/Sprite.texture = load(texture)
+

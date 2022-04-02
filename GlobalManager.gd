@@ -33,8 +33,8 @@ func save_score():
 
 
 func game_over():
-	if score > highscore: highscore = score
-	save_score()
+#	if score > highscore: highscore = score
+#	save_score()
 	get_tree().change_scene(end_screen)
 
 func next_level():
