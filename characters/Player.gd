@@ -25,8 +25,8 @@ func get_input(delta):
 	if Input.is_action_pressed("right"):
 		input_velocity.x += 2
 	if Input.is_action_just_pressed('dash'):
-		speed = speed * 3
 		if not dashing:
+			speed = speed * 3
 			dashing = true
 
 	if dashing:
