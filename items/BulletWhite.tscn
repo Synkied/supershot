@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://assets/bullet_white.png" type="Texture" id=1]
+[ext_resource path="res://assets/bullet_yellow.png" type="Texture" id=1]
 [ext_resource path="res://items/Projectile.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/laser_gun.wav" type="AudioStream" id=3]
 

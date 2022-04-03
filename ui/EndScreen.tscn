@@ -1,6 +1,6 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://ui/StartScreen.gd" type="Script" id=1]
+[ext_resource path="res://ui/EndScreen.gd" type="Script" id=1]
 [ext_resource path="res://assets/Stilu-Regular.otf" type="DynamicFontData" id=2]
 
 [sub_resource type="DynamicFont" id=1]
@@ -10,6 +10,12 @@ outline_color = Color( 0.682353, 0.215686, 0.556863, 1 )
 use_mipmaps = true
 use_filter = true
 font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 2 )
+
+[sub_resource type="Theme" id=7]
+default_font = SubResource( 4 )
 
 [sub_resource type="DynamicFont" id=6]
 font_data = ExtResource( 2 )
@@ -88,10 +94,11 @@ anchor_bottom = 1.0
 margin_right = 1024.0
 margin_bottom = 600.0
 size_flags_vertical = 3
+custom_constants/separation = 20
 
 [node name="super" type="Label" parent="VBoxContainer/HBoxContainer"]
 margin_top = 260.0
-margin_right = 510.0
+margin_right = 502.0
 margin_bottom = 340.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 1 )
@@ -100,16 +107,26 @@ align = 2
 valign = 1
 
 [node name="shot" type="Label" parent="VBoxContainer/HBoxContainer"]
-margin_left = 514.0
-margin_top = -100.0
+margin_left = 522.0
+margin_top = 260.0
 margin_right = 1024.0
-margin_bottom = -20.0
+margin_bottom = 340.0
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 1 )
 text = "SHOT"
 valign = 1
 
-[node name="alpha" type="Label" parent="."]
+[node name="HighScore" type="Label" parent="."]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 1024.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+theme = SubResource( 7 )
+text = "Levels beaten: "
+valign = 2
+
+[node name="Version" type="Label" parent="."]
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_left = 10.0
@@ -134,4 +151,8 @@ margin_bottom = 115.0
 text = "Restart"
 flat = true
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -20.0
+
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_AudioStreamPlayer_finished"]
