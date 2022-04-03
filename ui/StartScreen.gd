@@ -4,8 +4,10 @@ extends CanvasLayer
 var intro_music = preload("res://assets/intro.wav")
 
 func _ready():
+	Engine.time_scale = 1.0
 	play_music()
-	$AnimationPlayer.play("appear")
+	$TextAnimation.play("appear")
+	$BulletAnimation.play("bullets")
 	$HighScore.text += str(GlobalStore.highscore)
 
 func _input(event):

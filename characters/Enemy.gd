@@ -19,25 +19,27 @@ func _ready():
 
 func _physics_process(delta):
 	move = Vector2.ZERO
+	sprite.play("idle")
 	
+
 	if player != null:
+		# default move position
+		move = position.direction_to(player.position) * speed * delta
+
 		var space_state = get_world_2d().direct_space_state
 		var collider = space_state.intersect_ray(position, player.position)
 		if collider:
-			var collider_name = collider.collider.name
-			if collider_name == 'Walls':
+			print(collider.collider.is_in_group('walls'))
+			if collider.collider.is_in_group('walls'):
 				move = Vector2.ZERO
-			else:
-				move = position.direction_to(player.position) * speed  * delta
-				sprite.play("walk")
-				if fire_delay < 0 and has_weapon and can_shoot:
-					shoot()
-				else:
-					fire_delay -= 1.0 * delta
 
-	else:
-		move = Vector2.ZERO
-		sprite.play("idle")
+		if fire_delay < 0 and has_weapon and can_shoot:
+			shoot()
+		else:
+			fire_delay -= 1.0 * delta
+	
+	if move:
+		sprite.play("walk")
 
 	move = move_and_collide(move)
 

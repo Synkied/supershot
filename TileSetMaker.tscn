@@ -50,8 +50,25 @@ texture = ExtResource( 6 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 64, 64 )
 
-[node name="ground_white" type="Sprite" parent="."]
+[node name="ground_orange" type="Sprite" parent="."]
 position = Vector2( -1, 0 )
 texture = ExtResource( 7 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 64, 64 )
+
+[node name="fake_wall" type="Sprite" parent="."]
+position = Vector2( -1, 0 )
+texture = ExtResource( 3 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 64, 64 )
+
+[node name="fake_ground" type="Sprite" parent="."]
+position = Vector2( -1, 0 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 64, 64 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="fake_ground"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="fake_ground/StaticBody2D"]
+polygon = PoolVector2Array( 32, 31, 32, -32, -32, -32, -32, 32 )

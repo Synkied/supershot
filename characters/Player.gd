@@ -3,13 +3,17 @@ extends "res://characters/Character.gd"
 # Variables
 var velocity = Vector2.ZERO
 var font
-
+var dashing = false
+var DASH_TIME = 0.1
+var dash_acc = 0
+var BASE_SPEED = 200
 
 func _ready():
 	font = Control.new().get_font("font")
 
 
-func get_input():
+func get_input(delta):
+#	acceleration = acceleration
 	var input_velocity = Vector2.ZERO
 
 	if Input.is_action_pressed("up"):
@@ -19,7 +23,20 @@ func get_input():
 	if Input.is_action_pressed("left"):
 		input_velocity.x -= 1
 	if Input.is_action_pressed("right"):
-		input_velocity.x += 1
+		input_velocity.x += 2
+	if Input.is_action_just_pressed('dash'):
+		speed = speed * 3
+		if not dashing:
+			dashing = true
+
+	if dashing:
+		dash_acc += delta
+	
+		if dash_acc >= DASH_TIME:    
+			dashing = false
+			dash_acc = 0
+			speed = BASE_SPEED
+
 	if Input.is_action_just_pressed('click_left') and has_weapon:
 		shoot()
 
@@ -54,7 +71,7 @@ func slow_time():
 
 
 func _process(delta):
-	get_input()
+	get_input(delta)
 	position += velocity * delta
 	
 	var distance = gun.position.length()

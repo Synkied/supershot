@@ -1,12 +1,18 @@
 extends Node
 
-signal reason
-
 # Variables
 var levels = [
 	'res://levels/Level1.tscn',
 	'res://levels/Level2.tscn',
 	'res://levels/Level3.tscn',
+	'res://levels/Level4.tscn',
+	'res://levels/Level5.tscn',
+	'res://levels/Level6.tscn',
+	'res://levels/Level7.tscn',
+	'res://levels/Level8.tscn',
+	'res://levels/Level9.tscn',
+	'res://levels/Level10.tscn',
+	'res://ui/Win.tscn',
 ]
 var current_level = 0
 var start_screen = 'res://ui/StartScreen.tscn'
@@ -31,8 +37,7 @@ func setup():
 func new_game():
 	current_level = -1
 	score = 0
-	var reason = 'new game'
-	next_level(reason)
+	next_level()
 
 
 func save_score():
@@ -42,19 +47,18 @@ func save_score():
 	f.close()
 
 
-func game_over(reason):
+func game_over():
 	if score > highscore: highscore = score
 	save_score()
 	Engine.time_scale = 1.0
-	emit_signal('reason', reason)
 	get_tree().change_scene(end_screen)
 
-func next_level(reason):
+func next_level():
 	Engine.time_scale = 1.0
 	current_level += 1
 	if current_level >= GlobalStore.levels.size():
 		# no more levels to load :(
-		game_over(reason)
+		game_over()
 	else:
 		score += 1
 		get_tree().change_scene(levels[current_level])

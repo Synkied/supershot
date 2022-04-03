@@ -43,9 +43,8 @@ func bleed():
 		Tween.TRANS_QUAD,
 		Tween.EASE_IN_OUT
 	)
-
-	bleeding_timer.start()
 	$Tween.start()
+	bleeding_timer.start()
 
 func attach_weapon(texture):
 	has_weapon = true

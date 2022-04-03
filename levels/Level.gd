@@ -10,6 +10,8 @@ onready var items = $Items
 onready var ground = $Ground
 onready var player_camera = $Player/Camera2D
 onready var player = $Player
+onready var hud = $HUD
+onready var message = $Message
 
 # Variables
 var enemies = []
@@ -24,6 +26,8 @@ func _ready():
 	items.hide()
 	set_camera_limits()
 	spawn_items()
+	if message:
+		hud.process_message(message.text)
 
 
 func spawn_items():
@@ -47,7 +51,7 @@ func spawn_items():
 				weapons.append(weapon)
 			'table_unflipped', 'table_flipped':
 				var table = Table.instance()
-				table.init(type, pos)
+				table.init(type, pos, cell_rotation)
 				add_child(table)
 
 	for weapon in weapons:
@@ -57,8 +61,6 @@ func spawn_items():
 func set_camera_limits():
 	var map_size = $Ground.get_used_rect()
 	var cell_size = $Ground.cell_size
-	print('cell', cell_size)
-	print('map', map_size)
 	player_camera.limit_left = map_size.position.x * cell_size.x
 	player_camera.limit_top = map_size.position.y * cell_size.y
 	player_camera.limit_right = map_size.end.x * cell_size.x
@@ -67,11 +69,10 @@ func set_camera_limits():
 
 func are_enemies_dead():
 	if get_tree().get_nodes_in_group("enemies").empty():
-		var reason = "enemies dead"
-		GlobalStore.next_level(reason)
+		GlobalStore.next_level()
 
-func next_level(reason):
-	GlobalStore.next_level(reason)
+func next_level():
+	GlobalStore.next_level()
 
 
 func get_cell_rotation(tilemap, cell_position):
@@ -93,3 +94,4 @@ func get_cell_rotation(tilemap, cell_position):
 
 	print("Unknown", transposed, flipX, flipY)
 	return 0
+

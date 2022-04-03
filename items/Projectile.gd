@@ -16,7 +16,6 @@ func _on_Projectile_body_entered(body):
 		body.bleed()
 	if body.is_in_group("players"):
 		body.bleed()
-		var reason = 'you died'
-		GlobalStore.game_over(reason)
+		GlobalStore.game_over()
 	if body.is_in_group("walls"):
 		queue_free()

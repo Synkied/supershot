@@ -13,11 +13,11 @@ export (bool) var flipped = false
 export (bool) var flipping = false
 
 
-func init(_type, pos):
+func init(_type, pos, cell_rotation):
 	$Sprite.texture = load(textures[_type])
 	type = _type
 	position = pos
-	print(position)
+	rotation = cell_rotation
 
 func process_flip():
 	if flipping:
@@ -35,7 +35,6 @@ func _process(delta):
 
 
 func _on_Table_body_entered(body):
-	print('table collided with', body)
 	if body.is_in_group('players'):
 		flipping = true
 
