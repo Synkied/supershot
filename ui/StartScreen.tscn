@@ -295,6 +295,17 @@ theme = SubResource( 5 )
 text = "Levels beaten: "
 valign = 2
 
+[node name="Action" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -38.0
+margin_top = -230.0
+margin_right = 38.0
+margin_bottom = -216.0
+text = "Press SPACE"
+
 [node name="TextAnimation" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 3 )
 anims/appear = SubResource( 2 )
