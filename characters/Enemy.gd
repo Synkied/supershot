@@ -29,7 +29,6 @@ func _physics_process(delta):
 		var space_state = get_world_2d().direct_space_state
 		var collider = space_state.intersect_ray(position, player.position)
 		if collider:
-			print(collider.collider.is_in_group('walls'))
 			if collider.collider.is_in_group('walls'):
 				move = Vector2.ZERO
 

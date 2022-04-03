@@ -54,14 +54,8 @@ func get_input(delta):
 
 
 func _physics_process(_delta):
-#	gun.position.x = original_gun_x
 	slow_time()
-
 	velocity = move_and_slide(velocity)
-	for i in get_slide_count():
-		var collision = get_slide_collision(i)
-		var collider_name = collision.collider.name
-		print("player collided with ", collider_name)
 
 func slow_time():
 	if velocity.length():

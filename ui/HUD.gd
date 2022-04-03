@@ -39,6 +39,6 @@ func _on_Timer_timeout():
 	message_tween.start()
 
 
-func _on_MessageTween_tween_completed(object, key):
+func _on_MessageTween_tween_completed(_object, _key):
 	message.queue_free()
 	message_timer.queue_free()

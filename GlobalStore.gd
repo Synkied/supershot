@@ -11,7 +11,7 @@ var levels = [
 	'res://levels/Level7.tscn',
 	'res://levels/Level8.tscn',
 	'res://levels/Level9.tscn',
-	'res://levels/Level10.tscn',
+#	'res://levels/Level10.tscn',
 	'res://ui/Win.tscn',
 ]
 var current_level = 0

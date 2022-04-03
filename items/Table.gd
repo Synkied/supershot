@@ -2,6 +2,7 @@ extends RigidBody2D
 
 # Onready
 onready var sprite = $Sprite
+onready var collision_shape = $CollisionShape2D
 
 # Variables
 var type
@@ -30,7 +31,7 @@ func process_flip():
 
 	flipping = false
 
-func _process(delta):
+func _process(_delta):
 	process_flip()
 
 

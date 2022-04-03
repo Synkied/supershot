@@ -18,7 +18,7 @@ var enemies = []
 var weapons = []
 var enemies_dead = false
 
-func _process(delta):
+func _process(_delta):
 	are_enemies_dead()
 
 # Called when the node enters the scene tree for the first time.
