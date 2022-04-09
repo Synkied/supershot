@@ -11,14 +11,11 @@ func _ready():
 	$BulletAnimation.play("bullets")
 	$HighScore.text += str(GlobalStore.highscore)
 
-func _input(event):
-	if event.is_action_pressed('ui_select'):
+func _input(_event):
+	if Input.is_action_just_pressed('continue'):
+		GlobalStore.continue_game()
+	if Input.is_action_just_pressed('restart'):
 		GlobalStore.new_game()
-
-
-func _on_Button_pressed():
-	GlobalStore.new_game()
-
 
 func play_music():
 	if !$AudioStreamPlayer.is_playing():
@@ -27,3 +24,11 @@ func play_music():
 
 func _on_AudioStreamPlayer_finished():
 	play_music()
+
+
+func _on_RestartButton_pressed():
+	GlobalStore.new_game()
+
+
+func _on_ContinueButton_pressed():
+	GlobalStore.continue_game()

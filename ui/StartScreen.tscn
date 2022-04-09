@@ -1,17 +1,11 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://ui/StartScreen.gd" type="Script" id=1]
 [ext_resource path="res://assets/Stilu-Regular.otf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/bullet_yellow.png" type="Texture" id=3]
 [ext_resource path="res://assets/bullet_blue_magic.png" type="Texture" id=4]
-
-[sub_resource type="DynamicFont" id=1]
-size = 64
-outline_size = 2
-outline_color = Color( 0.682353, 0.215686, 0.556863, 1 )
-use_mipmaps = true
-use_filter = true
-font_data = ExtResource( 2 )
+[ext_resource path="res://ui/theme.tres" type="Theme" id=5]
+[ext_resource path="res://ui/main_theme.tres" type="Theme" id=6]
 
 [sub_resource type="DynamicFont" id=6]
 font_data = ExtResource( 2 )
@@ -259,7 +253,7 @@ margin_top = 260.0
 margin_right = 487.0
 margin_bottom = 340.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 1 )
+theme = ExtResource( 6 )
 text = "SUPER"
 align = 2
 
@@ -269,7 +263,7 @@ margin_top = -100.0
 margin_right = 1001.0
 margin_bottom = -20.0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 1 )
+theme = ExtResource( 6 )
 text = "SHOT"
 autowrap = true
 
@@ -296,15 +290,28 @@ text = "Levels beaten: "
 valign = 2
 
 [node name="Action" type="Label" parent="."]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -38.0
-margin_top = -230.0
-margin_right = 38.0
-margin_bottom = -216.0
-text = "Press SPACE"
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = 64.0
+margin_bottom = 84.0
+theme = ExtResource( 5 )
+text = "Press F"
+align = 1
+
+[node name="Controls" type="Label" parent="."]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = 137.0
+margin_bottom = 151.0
+text = "Controls
+
+AWSD/Arrows: walk
+Left Mouse Button: shoot
+Space: dash"
+align = 1
+uppercase = true
 
 [node name="TextAnimation" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 3 )
@@ -317,7 +324,7 @@ anims/appear = SubResource( 9 )
 anims/bullets = SubResource( 10 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-volume_db = -20.0
+volume_db = -10.0
 
 [node name="Bullet1" type="Sprite" parent="."]
 position = Vector2( 1112, 362 )

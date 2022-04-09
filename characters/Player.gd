@@ -28,10 +28,29 @@ func get_input(delta):
 		if not dashing:
 			speed = speed * 3
 			dashing = true
+			$Tween.interpolate_property(
+				$AnimatedSprite,
+				'modulate',
+				Color(1, 1, 1, 1),
+				Color(0, 0, 0, 0.5),
+				0.3,
+				Tween.TRANS_QUAD,
+				Tween.EASE_IN_OUT
+			)
+			$Tween.interpolate_property(
+				$AnimatedSprite,
+				'modulate',
+				Color(0, 0, 0, 0.5),
+				Color(1, 1, 1, 1),
+				0.3,
+				Tween.TRANS_QUAD,
+				Tween.EASE_IN_OUT
+			)
+			$Tween.start()
 
 	if dashing:
 		dash_acc += delta
-	
+
 		if dash_acc >= DASH_TIME:    
 			dashing = false
 			dash_acc = 0
@@ -78,3 +97,5 @@ func _process(delta):
 func _draw():
 	draw_string(font, Vector2(20, 0), 'Hey you!')
 	update()
+
+

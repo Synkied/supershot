@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://ui/HUD.gd" type="Script" id=1]
 [ext_resource path="res://assets/Stilu-SemiBold.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/arrow.png" type="Texture" id=3]
+[ext_resource path="res://assets/shoot_action.png" type="Texture" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
@@ -9,6 +11,21 @@ font_data = ExtResource( 2 )
 
 [sub_resource type="Theme" id=2]
 default_font = SubResource( 1 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 16, 16 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 16, 16 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 16, 16 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 16, 16 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 16, 16 )
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -23,11 +40,69 @@ theme = SubResource( 2 )
 align = 1
 valign = 1
 autowrap = true
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="MessageTween" type="Tween" parent="."]
 
 [node name="MessageTimer" type="Timer" parent="."]
 wait_time = 0.5
+
+[node name="UpButton" type="TouchScreenButton" parent="."]
+position = Vector2( 72, 488 )
+normal = ExtResource( 3 )
+shape = SubResource( 3 )
+action = "up"
+visibility_mode = 1
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="LeftButton" type="TouchScreenButton" parent="."]
+position = Vector2( 40, 552 )
+rotation = -1.5708
+normal = ExtResource( 3 )
+shape = SubResource( 6 )
+action = "left"
+visibility_mode = 1
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="RightButton" type="TouchScreenButton" parent="."]
+position = Vector2( 136, 520 )
+rotation = 1.5708
+normal = ExtResource( 3 )
+shape = SubResource( 4 )
+action = "right"
+visibility_mode = 1
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="DownButton" type="TouchScreenButton" parent="."]
+position = Vector2( 104, 584 )
+rotation = 3.14159
+normal = ExtResource( 3 )
+shape = SubResource( 5 )
+action = "down"
+visibility_mode = 1
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Action" type="TouchScreenButton" parent="."]
+position = Vector2( 944, 560 )
+rotation = 3.14159
+scale = Vector2( 2, 2 )
+normal = ExtResource( 4 )
+shape = SubResource( 7 )
+action = "down"
+visibility_mode = 1
+__meta__ = {
+"_edit_group_": true
+}
 
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_AudioStreamPlayer_finished"]
 [connection signal="tween_completed" from="MessageTween" to="." method="_on_MessageTween_tween_completed"]

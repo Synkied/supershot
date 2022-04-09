@@ -11,7 +11,7 @@ func _ready():
 	$HighScore.text += str(GlobalStore.highscore)
 
 func _input(event):
-	if event.is_action_pressed('ui_select'):
+	if event.is_action_pressed('start'):
 		GlobalStore.new_game()
 
 

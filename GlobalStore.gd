@@ -39,6 +39,8 @@ func new_game():
 	score = 0
 	next_level()
 
+func continue_game():
+	get_tree().change_scene(levels[current_level])
 
 func save_score():
 	var f = File.new()
